@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duck Duck DNA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-mark" href="index.html">🦆</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="hero">
+  <h1 class="hero-title">DUCK<br><span class="accent">DUCK</span><br>DNA</h1>
+
+  <svg class="duck" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A simple line drawing of a duck">
+    <ellipse cx="95" cy="130" rx="55" ry="38" fill="#FAFAF7" stroke="#17181A" stroke-width="4"/>
+    <path class="duck-wing" d="M60 120 Q90 95 115 120 Q95 140 60 120 Z" fill="#F2B705" stroke="#17181A" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="140" cy="85" r="30" fill="#FAFAF7" stroke="#17181A" stroke-width="4"/>
+    <circle cx="150" cy="78" r="3.5" fill="#17181A"/>
+    <path d="M165 90 L184 86 L165 100 Z" fill="#F2B705" stroke="#17181A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M40 145 Q25 150 20 138" fill="none" stroke="#17181A" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+
+  <p class="hero-sub">
+    A small site, built for the web. <button id="seqBtn" type="button">reveal a sequence</button>
+  </p>
+  <p class="hero-sub" id="seqOut" style="font-family: monospace; letter-spacing: 0.15em; min-height: 1.2em;"></p>
+</main>
+
+<footer>&copy; <span id="year"></span> Duck Duck DNA</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

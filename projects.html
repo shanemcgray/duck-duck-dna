@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Duck Duck DNA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .filters { display: flex; gap: 0.75rem; margin: 1.5rem 0 2rem; flex-wrap: wrap; }
+  .filters button {
+    font: inherit; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    background: none; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.9rem;
+    cursor: pointer; color: var(--ink-soft); transition: all 0.15s ease;
+  }
+  .filters button.active { background: var(--yolk); border-color: var(--yolk); color: var(--ink); }
+  .grid { display: grid; gap: 1rem; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem; }
+  .card h3 { margin: 0 0 0.25rem; }
+  .card span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); }
+  .card[hidden] { display: none; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-mark" href="index.html">🦆</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html" aria-current="page">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<main class="page">
+  <p class="kicker">Projects</p>
+  <h1>Things made</h1>
+
+  <div class="filters" id="filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="web">Web</button>
+    <button data-filter="design">Design</button>
+    <button data-filter="misc">Misc</button>
+  </div>
+
+  <div class="grid" id="grid">
+    <div class="card" data-category="web"><span>Web</span><h3>Project One</h3><p>A short description of this project goes here.</p></div>
+    <div class="card" data-category="design"><span>Design</span><h3>Project Two</h3><p>A short description of this project goes here.</p></div>
+    <div class="card" data-category="misc"><span>Misc</span><h3>Project Three</h3><p>A short description of this project goes here.</p></div>
+  </div>
+</main>
+
+<footer>&copy; <span id="year"></span> Duck Duck DNA</footer>
+
+<script src="js/main.js"></script>
+<script>
+  const filters = document.getElementById('filters');
+  const cards = document.querySelectorAll('#grid .card');
+  filters.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    filters.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    cards.forEach(card => {
+      card.hidden = filter !== 'all' && card.dataset.category !== filter;
+    });
+  });
+</script>
+</body>
+</html>
