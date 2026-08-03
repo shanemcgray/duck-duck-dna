@@ -93,10 +93,15 @@ a { color: inherit; }
   color: var(--yolk);
 }
 
+.duck-wrap {
+  margin: 2.5rem 0 0.5rem;
+  cursor: pointer;
+}
+
 .duck {
   width: clamp(140px, 22vw, 220px);
   height: auto;
-  margin: 2.5rem 0 1.5rem;
+  animation: duck-in 0.25s ease;
 }
 
 .duck path,
@@ -108,6 +113,11 @@ a { color: inherit; }
 
 .duck:hover .duck-wing {
   transform: rotate(-8deg) translateY(-2px);
+}
+
+@keyframes duck-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .hero-sub {
