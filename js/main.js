@@ -66,7 +66,8 @@ if (duckWrap) {
 }
 
 // Homepage: reveal a random "DNA" sequence
-const seqBtn = document.getElementById('seqBtn');
+//const seqBtn = document.getElementById('seqBtn');
+const seqBtn = document.getElementById('duckWrap');
 const seqOut = document.getElementById('seqOut');
 if (seqBtn && seqOut) {
   const bases = ['A', 'T', 'C', 'G'];
