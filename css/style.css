@@ -220,3 +220,26 @@ footer {
     display: block;
     clear: both;
 }
+
+.not-ducks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.5rem auto;
+  max-width: 700px;
+}
+
+.not-ducks-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Responsive mobile layout */
+@media (max-width: 700px) {
+  .not-ducks-grid {
+    grid-template-columns: 1fr;
+  }
+}
