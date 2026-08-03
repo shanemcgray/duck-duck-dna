@@ -200,3 +200,23 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
 }
+
+#wiki-summary {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 700px;
+    background: #fafafa;
+}
+
+#wiki-summary img {
+    float: right;
+    margin-left: 20px;
+    border-radius: 6px;
+}
+
+#wiki-summary::after {
+    content: "";
+    display: block;
+    clear: both;
+}
