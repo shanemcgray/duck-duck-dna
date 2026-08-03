@@ -16,7 +16,7 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const seqBtn = document.getElementById('seqBtn');
 const seqOut = document.getElementById('seqOut');
 if (seqBtn && seqOut) {
-  const bases = ['A', 'T', 'C', 'G'];
+  const bases = ['Q', 'U', 'A', 'K'];
   seqBtn.addEventListener('click', () => {
     const seq = Array.from({ length: 16 }, () => bases[Math.floor(Math.random() * bases.length)]).join('');
     seqOut.textContent = seq;
