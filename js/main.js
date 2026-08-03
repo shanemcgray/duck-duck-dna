@@ -75,3 +75,43 @@ if (seqBtn && seqOut) {
     seqOut.textContent = seq;
   });
 }
+
+// wiki loader
+function loadWikipedia(article, elementId) {
+    const container = document.getElementById(elementId);
+
+    if (!container) {
+        return;
+    }
+
+    fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${article}`)
+        .then(response => response.json())
+        .then(data => {
+
+            let html = `
+                <h2>${data.title}</h2>
+            `;
+
+            if (data.thumbnail) {
+                html += `
+                    <img src="${data.thumbnail.source}"
+                         alt="${data.title}">
+                `;
+            }
+
+            html += `
+                <p>${data.extract}</p>
+                <p>
+                    <a href="${data.content_urls.desktop.page}" target="_blank">
+                        Read the full article on Wikipedia →
+                    </a>
+                </p>
+            `;
+
+            container.innerHTML = html;
+        })
+        .catch(error => {
+            container.innerHTML = "Couldn't load Wikipedia article.";
+            console.error(error);
+        });
+}
