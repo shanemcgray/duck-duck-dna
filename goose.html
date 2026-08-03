@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duck Duck DNA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav-mark" href="index.html">🦆</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" aria-current="page">Home</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+<main>
+  
+<div id="wiki-summary">
+    Loading Wikipedia...
+</div>
+
+
+</main>
+
+<footer>&copy; <span id="year"></span> Duck Duck DNA</footer>
+
+<script src="js/main.js"></script>
+<script>
+  loadWikipedia("Goose", "wiki-summary");
+</script>
+
+
+  
+</body>
+</html>
