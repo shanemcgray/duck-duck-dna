@@ -30,39 +30,7 @@
 <footer>&copy; <span id="year"></span> Duck Duck DNA</footer>
 
 <script src="js/main.js"></script>
-<script>
-fetch("https://en.wikipedia.org/api/rest_v1/page/summary/Duck")
-    .then(response => response.json())
-    .then(data => {
-        let html = `
-            <h2>${data.title}</h2>
-        `;
 
-        if (data.thumbnail) {
-            html += `
-                <img src="${data.thumbnail.source}"
-                     alt="${data.title}"
-                     style="max-width:250px; display:block; margin-bottom:10px;">
-            `;
-        }
-
-        html += `
-            <p>${data.extract}</p>
-            <p>
-                <a href="${data.content_urls.desktop.page}" target="_blank">
-                    Read the full article on Wikipedia →
-                </a>
-            </p>
-        `;
-
-        document.getElementById("wiki-summary").innerHTML = html;
-    })
-    .catch(error => {
-        document.getElementById("wiki-summary").innerHTML =
-            "Couldn't load Wikipedia article.";
-        console.error(error);
-    });
-</script>
 
   
 </body>
