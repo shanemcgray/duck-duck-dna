@@ -226,7 +226,7 @@ footer {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin: 1.5rem auto;
-  max-width: 700px;
+  max-width: 360px;
 }
 
 .not-ducks-grid img {
