@@ -27,7 +27,7 @@ const seqOut = document.getElementById('seqOut');
 function generateDNA() {
   if (!seqOut) return;
 
-  const bases = ['A', 'T', 'C', 'G'];
+  const bases = ['Q', 'U', 'A', 'K'];
 
   const seq = Array.from(
     { length: 32 },
