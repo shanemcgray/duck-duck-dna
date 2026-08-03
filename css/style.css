@@ -122,6 +122,12 @@ a { color: inherit; }
   to { opacity: 1; transform: scale(1); }
 }
 
+.duckImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .hero-sub {
   font-size: 0.95rem;
   color: var(--ink-soft);
