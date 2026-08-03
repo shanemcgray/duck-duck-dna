@@ -230,7 +230,9 @@ footer {
 }
 
 .not-ducks-grid img {
-  width: 100%;
+  /*width: 100%;*/
+  width: 140px;
+  height: 140px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 10px;
