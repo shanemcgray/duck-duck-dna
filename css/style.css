@@ -260,3 +260,10 @@ footer {
     font-size:1.1rem;
     letter-spacing:.2em;
 }
+
+hr {
+  width: 80%;
+  border: 0;
+  border-top: 2px solid var(--line);
+  margin: 2rem auto;
+}
