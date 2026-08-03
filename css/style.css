@@ -93,10 +93,12 @@ a { color: inherit; }
   color: var(--yolk);
 }
 
+/*
 .duck-wrap {
   margin: 2.5rem 0 0.5rem;
   cursor: pointer;
 }
+*/
 
 .duck {
   width: clamp(140px, 22vw, 220px);
