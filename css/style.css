@@ -268,3 +268,13 @@ hr {
   border-top: 2px solid var(--line);
   margin: 2rem auto;
 }
+
+.duck-generator-card {
+  width: min(90%, 500px);
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  text-align: center;
+}
