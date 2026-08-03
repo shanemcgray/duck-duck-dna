@@ -12,11 +12,64 @@ if (navToggle && navLinks) {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Homepage: generate a slightly-different duck each time
+const duckWrap = document.getElementById('duckWrap');
+if (duckWrap) {
+  const rand = (min, max) => +(Math.random() * (max - min) + min).toFixed(1);
+
+  function renderDuck() {
+    const bodyCx = 95, bodyCy = 130;
+    const bodyRx = rand(48, 60);
+    const bodyRy = rand(32, 40);
+
+    const headCx = rand(132, 148);
+    const headCy = rand(76, 90);
+    const headR = rand(25, 32);
+
+    const eyeCx = headCx + rand(6, 12);
+    const eyeCy = headCy - rand(4, 9);
+    const eyeR = rand(2.5, 4);
+
+    const beakTipX = headCx + headR + rand(14, 22);
+    const beakTipY = headCy + rand(-6, 4);
+    const beakTopX = headCx + headR - 5;
+    const beakTopY = headCy - rand(2, 8);
+    const beakBotX = headCx + headR - 5;
+    const beakBotY = headCy + rand(6, 14);
+
+    const wingStartX = bodyCx - bodyRx * 0.65;
+    const wingStartY = bodyCy - bodyRy * 0.4;
+    const wingCtrlY = bodyCy - bodyRy * rand(0.9, 1.3);
+    const wingMidX = bodyCx + bodyRx * 0.3;
+
+    const tailStartX = bodyCx - bodyRx * 0.85;
+    const tailStartY = bodyCy + bodyRy * 0.4;
+    const tailCtrlX = tailStartX - rand(12, 20);
+    const tailCtrlY = tailStartY + rand(3, 10);
+    const tailEndX = tailCtrlX - rand(3, 8);
+    const tailEndY = tailStartY - rand(5, 12);
+
+    duckWrap.innerHTML = `
+      <svg class="duck" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A randomly generated line drawing of a duck">
+        <ellipse cx="${bodyCx}" cy="${bodyCy}" rx="${bodyRx}" ry="${bodyRy}" fill="#FAFAF7" stroke="#17181A" stroke-width="4"/>
+        <path class="duck-wing" d="M${wingStartX} ${wingStartY} Q${bodyCx} ${wingCtrlY} ${wingMidX} ${wingStartY} Q${bodyCx} ${bodyCy - bodyRy * 0.1} ${wingStartX} ${wingStartY} Z" fill="#F2B705" stroke="#17181A" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="${headCx}" cy="${headCy}" r="${headR}" fill="#FAFAF7" stroke="#17181A" stroke-width="4"/>
+        <circle cx="${eyeCx}" cy="${eyeCy}" r="${eyeR}" fill="#17181A"/>
+        <path d="M${beakTopX} ${beakTopY} L${beakTipX} ${beakTipY} L${beakBotX} ${beakBotY} Z" fill="#F2B705" stroke="#17181A" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M${tailStartX} ${tailStartY} Q${tailCtrlX} ${tailCtrlY} ${tailEndX} ${tailEndY}" fill="none" stroke="#17181A" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    `;
+  }
+
+  renderDuck();
+  duckWrap.addEventListener('click', renderDuck);
+}
+
 // Homepage: reveal a random "DNA" sequence
 const seqBtn = document.getElementById('seqBtn');
 const seqOut = document.getElementById('seqOut');
 if (seqBtn && seqOut) {
-  const bases = ['Q', 'U', 'A', 'K'];
+  const bases = ['A', 'T', 'C', 'G'];
   seqBtn.addEventListener('click', () => {
     const seq = Array.from({ length: 16 }, () => bases[Math.floor(Math.random() * bases.length)]).join('');
     seqOut.textContent = seq;
