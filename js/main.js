@@ -174,10 +174,13 @@ function renderDuck() {
 }
 
 
-// Single generator action
+// Single generator action and make quack
+const quackSound = new Audio('/sounds/qua.ogg');
 function generateDuck() {
   renderDuck();
   generateDNA();
+  quackSound.currentTime = 0;
+  quackSound.play();
 }
 
 
