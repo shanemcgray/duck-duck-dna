@@ -278,3 +278,13 @@ hr {
   background: white;
   text-align: center;
 }
+
+.duck-photo,
+.duck-images {
+    width: min(220px, 90vw);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
