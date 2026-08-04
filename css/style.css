@@ -255,7 +255,11 @@ footer {
 
 
 #seqOut {
+    width: 100%;
+    margin: 1rem auto 0;
+    font-family: monospace;
     font-size: 0.7rem;
+    text-align: center;
     letter-spacing: .08em;
     line-height: 1.8;
 }
