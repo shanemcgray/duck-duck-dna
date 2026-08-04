@@ -254,12 +254,10 @@ footer {
 }
 
 
-#seqOut{
-    margin-top:1rem;
-    font-family:monospace;
-    font-size:0.7rem;
-    text-align: center;
-    letter-spacing:.2em;
+#seqOut {
+    font-size: 0.7rem;
+    letter-spacing: .08em;
+    line-height: 1.8;
 }
 
 hr {
