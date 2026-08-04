@@ -281,9 +281,8 @@ hr {
 
 .duck-photo,
 .duck-images {
-    width: min(220px, 90vw);
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+    width: min(400px, 90vw);
+    height: auto;
     display: block;
     margin: 0 auto;
     border-radius: 10px;
