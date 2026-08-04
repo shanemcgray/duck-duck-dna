@@ -179,7 +179,7 @@ const quackSound = new Audio('/sounds/qua.ogg');
 function generateDuck() {
   renderDuck();
   generateDNA();
-  quackSound.currentTime = 0.2;
+  quackSound.currentTime = 0.1;
   quackSound.play();
 }
 
