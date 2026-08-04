@@ -22,19 +22,25 @@ if (yearEl) {
 const duckWrap = document.getElementById('duckWrap');
 const seqOut = document.getElementById('seqOut');
 
-
-// Generate DNA sequence
+// Generate QUAK DNA sequence
 function generateDNA() {
   if (!seqOut) return;
 
   const bases = ['Q', 'U', 'A', 'K'];
 
-  const seq = Array.from(
-    { length: 32 },
-    () => bases[Math.floor(Math.random() * bases.length)]
-  ).join('');
+  // Configuration
+  const groups = 4;        // Number of groups
+  const blockSize = 4;     // Bases per group
+  const totalBases = groups * blockSize;
 
-  seqOut.textContent = seq;
+  const seq = Array.from(
+    { length: totalBases },
+    () => bases[Math.floor(Math.random() * bases.length)]
+  ).join("");
+
+  const regex = new RegExp(`.{1,${blockSize}}`, "g");
+
+  seqOut.textContent = seq.match(regex).join(" ");
 }
 
 
