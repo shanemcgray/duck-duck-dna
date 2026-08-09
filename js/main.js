@@ -232,7 +232,7 @@ async function playQuack() {
 
   // Random pitch: 0.9x to 1.1x
   source.playbackRate.value =
-    0.9 + Math.random() * 0.2;
+    0.5 + Math.random() * 0.5;
 
   // Consistent volume
   gain.gain.value = 0.8;
@@ -240,7 +240,7 @@ async function playQuack() {
   source.connect(gain);
 
   // 1% chance of reverb
-  if (Math.random() < 0.01) {
+  if (Math.random() < 0.05) {
     const reverb = audioContext.createConvolver();
     reverb.buffer = createReverb();
 
