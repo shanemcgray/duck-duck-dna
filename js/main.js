@@ -174,15 +174,114 @@ function renderDuck() {
 }
 
 
-// Single generator action and make quack
+// Web audio version
+// Duck sound
+let audioContext;
+let quackBuffer;
+
+// Preload and decode the sound
+async function loadQuack() {
+  audioContext = new AudioContext();
+
+  const response = await fetch('/sounds/qua.ogg');
+  const arrayBuffer = await response.arrayBuffer();
+
+  quackBuffer = await audioContext.decodeAudioData(arrayBuffer);
+}
+
+loadQuack();
+
+
+function createReverb() {
+  const duration = 2.5;
+  const decay = 1.5;
+
+  const length = audioContext.sampleRate * duration;
+  const impulse = audioContext.createBuffer(
+    2,
+    length,
+    audioContext.sampleRate
+  );
+
+  for (let channel = 0; channel < 2; channel++) {
+    const data = impulse.getChannelData(channel);
+
+    for (let i = 0; i < length; i++) {
+      data[i] =
+        (Math.random() * 2 - 1) *
+        Math.pow(1 - i / length, decay);
+    }
+  }
+
+  return impulse;
+}
+
+
+// Play the duck sound
+async function playQuack() {
+  if (!quackBuffer) return;
+
+  if (audioContext.state === 'suspended') {
+    await audioContext.resume();
+  }
+
+  const source = audioContext.createBufferSource();
+  const gain = audioContext.createGain();
+
+  source.buffer = quackBuffer;
+
+  // Random pitch: 0.9x to 1.1x
+  source.playbackRate.value =
+    0.9 + Math.random() * 0.2;
+
+  // Consistent volume
+  gain.gain.value = 0.8;
+
+  source.connect(gain);
+
+  // 1% chance of reverb
+  if (Math.random() < 0.01) {
+    const reverb = audioContext.createConvolver();
+    reverb.buffer = createReverb();
+
+    // Dry signal
+    gain.connect(audioContext.destination);
+
+    // Reverb signal
+    const reverbGain = audioContext.createGain();
+    reverbGain.gain.value = 0.7;
+
+    gain.connect(reverb);
+    reverb.connect(reverbGain);
+    reverbGain.connect(audioContext.destination);
+  } else {
+    gain.connect(audioContext.destination);
+  }
+
+  // Start 0.1 seconds into the sound
+  source.start(0, 0.1);
+}
+
+
+// Generate duck
+function generateDuck() {
+  renderDuck();
+  generateDNA();
+  playQuack();
+}
+
+/*
+// simple audio version
 const quackSound = new Audio('/sounds/qua.ogg');
+
+// Single generator action and make quack
 function generateDuck() {
   renderDuck();
   generateDNA();
   quackSound.currentTime = 0.1;
   quackSound.play();
 }
-
+*/
 
 // Initialize duck generator
 if (duckWrap) {
