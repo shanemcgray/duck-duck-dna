@@ -232,7 +232,7 @@ async function playQuack() {
 
   // Random pitch: 0.9x to 1.1x
   source.playbackRate.value =
-    0.5 + Math.random() * 0.5;
+    0.7 + Math.random() * 0.3;
 
   // Consistent volume
   gain.gain.value = 0.8;
