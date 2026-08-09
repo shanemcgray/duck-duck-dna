@@ -230,9 +230,11 @@ async function playQuack() {
 
   source.buffer = quackBuffer;
 
+  /*
   // Random pitch: 0.9x to 1.1x
   source.playbackRate.value =
-    0.7 + Math.random() * 0.3;
+    0.8 + Math.random() * 0.2;
+    */
 
   // Consistent volume
   gain.gain.value = 0.8;
